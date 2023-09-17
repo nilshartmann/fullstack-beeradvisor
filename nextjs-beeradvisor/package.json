@@ -1,0 +1,40 @@
+{
+  "name": "nextjs-heise",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "shop-backend": "cd ../shop-backend && pnpm install && pnpm start",
+    "dev": "next dev -p 3000",
+    "dev:clean": "rm -rf ./.next && next dev",
+    "dev:clean:slow": "rm -rf ./.next && SLOW_DOWN_EVERYTHING=yes next dev",
+    "build": "next build",
+    "build:slow": "rm -rf ./.next && SLOW_DOWN_EVERYTHING=yes next build",
+    "start": "next start -p 4000",
+    "lint": "next lint",
+    "db:start": "cd .. && docker-compose up -d",
+    "db:generate-client": "prisma generate",
+    "db:reset": "prisma db push --force-reset && prisma db seed"
+  },
+  "prisma": {
+    "seed": "ts-node --esm prisma/seed.mts"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.16.1",
+    "@types/node": "20.3.1",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "eslint": "8.43.0",
+    "eslint-config-next": "13.4.7",
+    "next": "13.4.19",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.1.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.2",
+    "prettier": "^2.8.8",
+    "prisma": "^4.16.1",
+    "ts-node": "^10.9.1"
+  }
+}
